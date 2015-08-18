@@ -7,13 +7,13 @@ class PlayersController < ApplicationController
     @players = Player.all
     @players = @players.where(team_id: params[:team_id]) if params[:team_id]
 
-    render json: @players
+    render json: @players, include_team: include_team
   end
 
   # GET /players/1
   # GET /players/1.json
   def show
-    render json: @player
+    render json: @player, include_team: true
   end
 
   # POST /players
@@ -56,5 +56,9 @@ class PlayersController < ApplicationController
 
     def player_params
       params.require(:player).permit(:name, :team_id)
+    end
+
+    def include_team
+      params[:include_team] == 'true'
     end
 end
