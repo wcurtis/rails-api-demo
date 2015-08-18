@@ -1,6 +1,12 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :update, :destroy]
 
+  # def default_serializer_options
+  #   {
+  #     root: false
+  #   }
+  # end
+
   # GET /teams
   # GET /teams.json
   def index
