@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :authenticate_user_from_token, only: [:create, :update, :destroy]
+  # before_action :authenticate_user_from_token, only: [:create, :update, :destroy]
   before_action :set_team, only: [:show, :update, :destroy]
 
   # def default_serializer_options
@@ -29,6 +29,7 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
+    authorize @team
 
     if @team.save
       render json: @team, status: :created, location: @team
@@ -41,6 +42,7 @@ class TeamsController < ApplicationController
   # PATCH/PUT /teams/1.json
   def update
     @team = Team.find(params[:id])
+    authorize @team
 
     if @team.update(team_params)
       head :no_content
@@ -53,6 +55,7 @@ class TeamsController < ApplicationController
   # DELETE /teams/1.json
   def destroy
     @team.destroy
+    authorize @team
 
     head :no_content
   end

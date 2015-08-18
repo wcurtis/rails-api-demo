@@ -3,6 +3,10 @@ require 'securerandom'
 class User < ActiveRecord::Base
   before_create :set_auth_token
 
+  def admin?
+    self.is_admin == true
+  end
+
   private
     def set_auth_token
       return if auth_token.present?

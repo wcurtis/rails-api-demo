@@ -1,10 +1,18 @@
 class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Token::ControllerMethods
+  include Pundit
+
+  before_action :authenticate_user_from_token
 
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found_error
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized_error
 
   def record_not_found_error
     render_error "This is not the resource you're looking for *jedi hand wave*", :not_found
+  end
+
+  def not_authorized_error
+    render_error "Not authorized", :unauthorized
   end
 
   # Returns pagination info for collections
@@ -35,5 +43,9 @@ class ApplicationController < ActionController::API
       }
     }
     render json: error, status: status
+  end
+
+  def current_user
+    @authenticated_user
   end
 end
