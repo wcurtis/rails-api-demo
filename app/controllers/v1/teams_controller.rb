@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class V1::TeamsController < ApplicationController
   # before_action :authenticate_user_from_token, only: [:create, :update, :destroy]
   before_action :set_team, only: [:show, :update, :destroy]
 

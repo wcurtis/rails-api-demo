@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :users, except: [:new, :edit]
-  resources :players, except: [:new, :edit]
-  resources :teams, except: [:new, :edit]
+
+  namespace :v1 do
+    resources :users, except: [:new, :edit]
+    resources :players, except: [:new, :edit]
+    resources :teams, except: [:new, :edit]
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
