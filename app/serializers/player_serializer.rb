@@ -1,4 +1,4 @@
-class PlayerSerializer < ActiveModel::Serializer
-  attributes :id, :name
-  has_one :team
+class PlayerSerializer < ApplicationSerializer
+  attributes :id, :type, :name, :created_at, :updated_at
+  # has_one :team
 end
