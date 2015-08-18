@@ -12,6 +12,8 @@ gem 'sqlite3'
 
 gem "active_model_serializers", "~> 0.8.0"
 
+gem 'will_paginate', '~> 3.0.6'
+
 
 
 # To use ActiveModel has_secure_password

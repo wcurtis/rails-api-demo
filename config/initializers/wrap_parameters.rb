@@ -19,3 +19,5 @@
 #   # Disable for ArraySerializer
 #   ActiveModel::ArraySerializer.root = false
 # end
+
+WillPaginate.per_page = 10

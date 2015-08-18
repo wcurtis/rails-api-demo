@@ -12,7 +12,10 @@ class TeamsController < ApplicationController
   def index
     @teams = Team.all
 
-    render json: @teams
+    # Paginate
+    @teams = @teams.paginate(:page => params[:page])
+
+    render json: @teams, meta: meta_for_collection(@teams)
   end
 
   # GET /teams/1

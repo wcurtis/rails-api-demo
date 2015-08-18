@@ -5,9 +5,14 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     @players = Player.all
+
+    # Query param filters
     @players = @players.where(team_id: params[:team_id]) if params[:team_id]
 
-    render json: @players, include_team: include_team
+    # Paginate
+    @players = @players.paginate(:page => params[:page])
+
+    render json: @players, include_team: include_team, meta: meta_for_collection(@players)
   end
 
   # GET /players/1
