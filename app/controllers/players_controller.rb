@@ -12,6 +12,9 @@ class PlayersController < ApplicationController
     # Paginate
     @players = @players.paginate(:page => params[:page])
 
+    # Avoid n+1 queries
+    @players = @players.includes(:team) if include_team
+
     render json: @players, include_team: include_team, meta: meta_for_collection(@players)
   end
 
