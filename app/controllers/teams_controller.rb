@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :authenticate_user_from_token
+  before_action :authenticate_user_from_token, only: [:create, :update, :destroy]
   before_action :set_team, only: [:show, :update, :destroy]
 
   # def default_serializer_options
