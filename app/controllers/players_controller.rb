@@ -29,6 +29,7 @@ class PlayersController < ApplicationController
   # POST /players.json
   def create
     @player = Player.new(player_params)
+    authorize @player
 
     if @player.save
       render json: @player, status: :created, location: @player
@@ -41,6 +42,7 @@ class PlayersController < ApplicationController
   # PATCH/PUT /players/1.json
   def update
     @player = Player.find(params[:id])
+    authorize @player
 
     if @player.update(player_params)
       head :no_content
@@ -53,6 +55,7 @@ class PlayersController < ApplicationController
   # DELETE /players/1.json
   def destroy
     @player.destroy
+    authorize @player
 
     head :no_content
   end
