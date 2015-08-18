@@ -5,6 +5,7 @@ class PlayersController < ApplicationController
   # GET /players.json
   def index
     @players = Player.all
+    @players = @players.where(team_id: params[:team_id]) if params[:team_id]
 
     render json: @players
   end
