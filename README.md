@@ -1,6 +1,6 @@
 ## Rails API Demo
 
-This app was built to demo rails-api at [KW Ruby](http://www.meetup.com/kw-ruby-on-rails/).
+This app was built to demo rails-api at [KW Ruby](http://www.meetup.com/kw-ruby-on-rails/). The [presentation slides](./rails-api-presentation.pdf) are also available.
 
 ### Get started
 
@@ -27,6 +27,13 @@ rails server
 - Authentication
 - Authorization
 - Versioning
+
+### Recommended Gems
+
+- [rails-api](https://github.com/rails-api/rails-api)
+- [active_model_serializers](https://github.com/rails-api/active_model_serializers)
+- [will_paginate](https://github.com/mislav/will_paginate)
+- [pundit](https://github.com/elabs/pundit)
 
 ### Questions?
 
